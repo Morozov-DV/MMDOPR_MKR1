@@ -1,0 +1,10 @@
+[
+  { "id": "T1", "title": "Помилка авторизації", "priority": 5, "effort": 3, "minCompetence": 3, "status": "new" },
+  { "id": "T2", "title": "Налаштування резервного копіювання", "priority": 4, "effort": 4, "minCompetence": 4, "status": "new" },
+  { "id": "T3", "title": "Оновлення вебсервера", "priority": 4, "effort": 5, "minCompetence": 4, "status": "new" },
+  { "id": "T4", "title": "Налаштування робочих станцій", "priority": 2, "effort": 3, "minCompetence": 2, "status": "new" },
+  { "id": "T5", "title": "Аналіз журналів помилок", "priority": 3, "effort": 2, "minCompetence": 3, "status": "new" },
+  { "id": "T6", "title": "Відновлення доступу до сервісу", "priority": 5, "effort": 2, "minCompetence": 4, "status": "new" },
+  { "id": "T7", "title": "Оновлення документації", "priority": 1, "effort": 2, "minCompetence": 1, "status": "new" },
+  { "id": "T8", "title": "Перевірка мережевої конфігурації", "priority": 3, "effort": 4, "minCompetence": 3, "status": "new" }
+]

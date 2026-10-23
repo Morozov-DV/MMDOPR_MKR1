@@ -1,0 +1,6 @@
+[
+  { "id": "E1", "name": "Олена", "competence": 5, "availableHours": 8 },
+  { "id": "E2", "name": "Андрій", "competence": 4, "availableHours": 7 },
+  { "id": "E3", "name": "Максим", "competence": 3, "availableHours": 8 },
+  { "id": "E4", "name": "Ірина", "competence": 5, "availableHours": 6 }
+]

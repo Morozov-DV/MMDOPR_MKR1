@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Планування ІТ-заявок</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <h1>Планування ІТ-заявок і розподіл навантаження</h1>
+    <nav class="tabs" id="tabs">
+      <button class="tab active" data-tab="tickets">Заявки</button>
+      <button class="tab" data-tab="employees">Виконавці</button>
+      <button class="tab" data-tab="planning">Планування</button>
+    </nav>
+  </header>
+
+  <!-- Єдине місце для повідомлень про успіх / помилки -->
+  <div id="message" class="message hidden" role="alert"></div>
+
+  <main>
+    <!-- ===== Сторінка «Заявки» ===== -->
+    <section id="page-tickets" class="page">
+      <h2>Заявки</h2>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>ID</th><th>Назва</th><th>Пріоритет</th><th>Трудомісткість, год</th>
+                <th>Мін. компетентність</th><th>Статус</th><th>Дії</th></tr>
+          </thead>
+          <tbody id="tickets-body"></tbody>
+        </table>
+      </div>
+
+      <h3 id="ticket-form-title">Нова заявка</h3>
+      <form id="ticket-form" class="form" novalidate>
+        <input type="hidden" id="ticket-id">
+        <label>Назва <input id="ticket-title" type="text" maxlength="120"></label>
+        <label>Пріоритет (1–5) <input id="ticket-priority" type="number" min="1" max="5" step="1"></label>
+        <label>Трудомісткість, год <input id="ticket-effort" type="number" min="0.5" max="100" step="0.5"></label>
+        <label>Мін. компетентність (1–5) <input id="ticket-min" type="number" min="1" max="5" step="1"></label>
+        <label>Статус
+          <select id="ticket-status">
+            <option value="new">Нова</option>
+            <option value="in_progress">У роботі</option>
+            <option value="done">Виконана</option>
+          </select>
+        </label>
+        <div class="buttons">
+          <button type="submit" class="primary">Зберегти заявку</button>
+          <button type="button" id="ticket-cancel" class="secondary">Скасувати</button>
+        </div>
+      </form>
+    </section>
+
+    <!-- ===== Сторінка «Виконавці» ===== -->
+    <section id="page-employees" class="page hidden">
+      <h2>Виконавці</h2>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>ID</th><th>Ім’я</th><th>Компетентність</th><th>Доступний час, год</th>
+                <th>Поточне завантаження, год</th><th>Залишок, год</th><th>Дії</th></tr>
+          </thead>
+          <tbody id="employees-body"></tbody>
+        </table>
+      </div>
+
+      <h3 id="employee-form-title">Новий виконавець</h3>
+      <form id="employee-form" class="form" novalidate>
+        <input type="hidden" id="employee-id">
+        <label>Ім’я <input id="employee-name" type="text" maxlength="60"></label>
+        <label>Компетентність (1–5) <input id="employee-competence" type="number" min="1" max="5" step="1"></label>
+        <label>Доступний час, год <input id="employee-hours" type="number" min="0.5" max="168" step="0.5"></label>
+        <div class="buttons">
+          <button type="submit" class="primary">Зберегти виконавця</button>
+          <button type="button" id="employee-cancel" class="secondary">Скасувати</button>
+        </div>
+      </form>
+    </section>
+
+    <!-- ===== Сторінка «Планування» ===== -->
+    <section id="page-planning" class="page hidden">
+      <h2>Планування</h2>
+      <div class="buttons">
+        <button id="btn-generate" class="primary">Сформувати план</button>
+        <button id="btn-save" class="secondary" disabled>Зберегти план</button>
+        <button id="btn-history" class="secondary">Переглянути історію</button>
+      </div>
+
+      <div id="plan-empty" class="hint">План ще не сформовано. Натисніть «Сформувати план».</div>
+
+      <div id="plan-result" class="hidden">
+        <h3>Показники</h3>
+        <div id="metrics" class="cards"></div>
+
+        <h3>Завантаження виконавців</h3>
+        <div id="loads"></div>
+
+        <h3>Таблиця розподілу</h3>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr><th>Заявка</th><th>Пріоритет</th><th>Год</th><th>Виконавець (можна змінити)</th><th>Перевірка обмежень</th></tr>
+            </thead>
+            <tbody id="assign-body"></tbody>
+          </table>
+        </div>
+
+        <h3>Нерозподілені заявки</h3>
+        <div id="unassigned"></div>
+      </div>
+
+      <div id="history-block" class="hidden">
+        <h3>Історія планів</h3>
+        <div id="history"></div>
+      </div>
+    </section>
+  </main>
+
+  <script src="js/app.js"></script>
+</body>
+</html>

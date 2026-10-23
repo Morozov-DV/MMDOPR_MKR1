@@ -1,0 +1,63 @@
+/* Базові стилі та адаптивна верстка */
+:root {
+  --bg: #f4f6fa; --card: #fff; --text: #1d2433; --muted: #667085;
+  --primary: #2f5bea; --danger: #d92d20; --ok: #15803d; --border: #d9dee8;
+}
+* { box-sizing: border-box; }
+body { margin: 0; font-family: system-ui, "Segoe UI", Roboto, sans-serif; background: var(--bg); color: var(--text); }
+.topbar { background: var(--card); border-bottom: 1px solid var(--border); padding: 12px 20px; }
+.topbar h1 { font-size: 20px; margin: 0 0 10px; }
+main { max-width: 1100px; margin: 0 auto; padding: 16px 20px 40px; }
+h2 { margin-top: 8px; } h3 { margin: 22px 0 8px; }
+.hidden { display: none !important; }
+
+/* Вкладки */
+.tabs { display: flex; gap: 6px; flex-wrap: wrap; }
+.tab { border: 1px solid var(--border); background: var(--bg); padding: 8px 16px; border-radius: 8px; cursor: pointer; font-size: 14px; }
+.tab.active { background: var(--primary); border-color: var(--primary); color: #fff; }
+
+/* Повідомлення */
+.message { max-width: 1100px; margin: 12px auto 0; padding: 10px 14px; border-radius: 8px; font-size: 14px; }
+.message.ok { background: #e7f6ec; color: var(--ok); border: 1px solid #b7e4c7; }
+.message.error { background: #fdecea; color: var(--danger); border: 1px solid #f5c2bd; }
+.message ul { margin: 6px 0 0; padding-left: 20px; }
+
+/* Таблиці */
+.table-wrap { overflow-x: auto; background: var(--card); border: 1px solid var(--border); border-radius: 8px; }
+table { width: 100%; border-collapse: collapse; font-size: 14px; }
+th, td { padding: 8px 10px; text-align: left; border-bottom: 1px solid var(--border); white-space: nowrap; }
+th { background: #eef1f7; font-weight: 600; }
+tr:last-child td { border-bottom: none; }
+td.wrap { white-space: normal; }
+.bad { color: var(--danger); font-weight: 600; } .good { color: var(--ok); }
+
+/* Форми */
+.form { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 12px; background: var(--card);
+        border: 1px solid var(--border); border-radius: 8px; padding: 14px; }
+.form label { display: flex; flex-direction: column; gap: 4px; font-size: 13px; color: var(--muted); }
+input, select { padding: 8px; border: 1px solid var(--border); border-radius: 6px; font-size: 14px; color: var(--text); background: #fff; }
+input.invalid { border-color: var(--danger); background: #fff6f5; }
+.buttons { display: flex; gap: 8px; flex-wrap: wrap; align-items: end; margin: 8px 0; }
+.form .buttons { grid-column: 1 / -1; margin: 0; }
+button { padding: 8px 14px; border-radius: 6px; border: 1px solid var(--border); background: #fff; cursor: pointer; font-size: 14px; }
+button.primary { background: var(--primary); border-color: var(--primary); color: #fff; }
+button.danger { color: var(--danger); border-color: #f0b4ae; }
+button:disabled { opacity: .5; cursor: not-allowed; }
+.hint { color: var(--muted); padding: 12px 0; }
+
+/* Картки показників і смуги завантаження */
+.cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 10px; }
+.card { background: var(--card); border: 1px solid var(--border); border-radius: 8px; padding: 10px 12px; }
+.card .v { font-size: 22px; font-weight: 700; } .card .l { font-size: 12px; color: var(--muted); }
+.load-row { display: grid; grid-template-columns: 150px 1fr 150px; gap: 10px; align-items: center; margin: 6px 0; font-size: 14px; }
+.bar { height: 14px; background: #e4e8f0; border-radius: 7px; overflow: hidden; }
+.bar > span { display: block; height: 100%; background: var(--primary); }
+.bar > span.full { background: #f79009; }
+.badge { display: inline-block; padding: 2px 8px; border-radius: 10px; font-size: 12px; background: #eef1f7; }
+.history-item { background: var(--card); border: 1px solid var(--border); border-radius: 8px; padding: 10px 12px; margin: 8px 0;
+                display: flex; justify-content: space-between; gap: 10px; flex-wrap: wrap; align-items: center; font-size: 14px; }
+
+@media (max-width: 640px) {
+  .load-row { grid-template-columns: 1fr; gap: 2px; }
+  .topbar h1 { font-size: 17px; }
+}
